@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IDLE_TIME, DECAY_INTERVAL } from "../config/button";
 
 export const useCounter = () => {
@@ -24,15 +24,15 @@ export const useCounter = () => {
     }, IDLE_TIME);
   };
 
-  const handleClick = (increment: number, id: number) => {
-    setCount(prev => prev + increment);
+  const handleClick = useCallback((increment: number, id: number) => {
+    setCount((prev) => prev + increment);
     resetIdle();
 
-    setDisabledButtons(prev => ({ ...prev, [id]: true }));
+    setDisabledButtons((prev) => ({ ...prev, [id]: true }));
     setTimeout(() => {
-      setDisabledButtons(prev => ({ ...prev, [id]: false }));
+      setDisabledButtons((prev) => ({ ...prev, [id]: false }));
     }, increment * 500);
-  };
+  }, []);
 
   useEffect(() => {
     resetIdle();

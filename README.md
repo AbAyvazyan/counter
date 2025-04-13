@@ -1,54 +1,44 @@
-# React + TypeScript + Vite
+# Simple Counter App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React web application that includes a counter and buttons that increment the counter by different values. The app implements features like button disablement based on time intervals and automatic counter decay after idle time.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Counter**: The counter starts from 0 and increments by values defined by the buttons.
+- **Buttons**: Three buttons with values 1, 2, and 3 that increase the counter by the corresponding value.
+- **Button Disablement**: After a button is clicked, it is disabled for a duration of `0.5 * increment value` (e.g., for value 1, it will be disabled for 0.5s).
+- **Idle Timeout**: If no button is clicked for 10 seconds, the counter starts decreasing by 1 every second until it reaches 0.
+- **Decaying Timer Reset**: Clicking a button resets the idle timeout and stops the decay process.
 
-## Expanding the ESLint configuration
+## Project Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To run this project locally, follow the steps below.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+Make sure you have **Node.js** and **npm** installed. You can check by running the following commands in your terminal:
+
+```bash
+node -v
+npm -v
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 1.Clone this repository to your local machine:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+git clone https://github.com/AbAyvazyan/counter.git
+cd counter
 ```
+### 2.Install the dependencies:
+
+```bash
+npm install
+```
+
+## Run the Development Server
+
+```bash
+npm run dev
+```
+
+This will start the development server, and you should be able to view the app in your browser at http://localhost:5173.

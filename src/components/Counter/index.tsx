@@ -1,13 +1,12 @@
-import { FC } from "react"
+import { FC } from "react";
+import "./style.css";
 
 type TCounter = {
-    count: number
-}
+  count: number;
+};
 
 const Counter: FC<TCounter> = ({ count }) => {
-    return <div>
-        {count}
-    </div>
-}
+  return <h2 className="counter">Counter: {count}</h2>;
+};
 
-export default Counter
+export default Counter;

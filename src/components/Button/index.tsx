@@ -1,14 +1,22 @@
 import { FC, ButtonHTMLAttributes } from "react";
+import "./style.css";
 
-// Extend native <button> props
-type TButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+type TButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  value: number;
+  disabled: boolean;
+};
 
-const Button: FC<TButtonProps> = ({ children, ...props }) => {
-    return (
-        <button {...props}>
-            {children}
-        </button>
-    );
+const Button: FC<TButtonProps> = ({ value, disabled, onClick, ...props }) => {
+  return (
+    <button
+      className="button"
+      disabled={disabled}
+      onClick={onClick}
+      {...props}
+    >
+      +{value}
+    </button>
+  );
 };
 
 export default Button;
